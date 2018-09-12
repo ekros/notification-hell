@@ -1,0 +1,100 @@
+@keyframes airplane-on {
+  0% {
+    filter: sepia(100%) hue-rotate(180deg) drop-shadow(0px 0px 5px white) brightness(100%);
+  }
+  100% {
+      filter: sepia(100%) hue-rotate(180deg) drop-shadow(0px 0px 1px white) brightness(150%);
+  }
+}
+
+.airplane {
+  position: relative;
+  cursor: pointer;
+}
+
+.airplane.not-ready {
+  cursor: not-allowed;
+  filter: brightness(50%);
+  transition: filter 0.5s;
+}
+
+.airplane:hover {
+  filter: brightness(110%);
+}
+
+.airplane.on .head,
+.airplane.on .body,
+.airplane.on .wings .left-wing,
+.airplane.on .wings .right-wing,
+.airplane.on .tail .left-tail,
+.airplane.on .tail .right-tail,
+.airplane.on .text {
+  animation-name: airplane-on;
+  animation-duration: 0.5s;
+  filter: sepia(100%) hue-rotate(180deg) drop-shadow(0px 0px 1px white) brightness(150%);
+}
+
+.airplane .head {
+  width: 5px;
+  height: 5px;
+  background: gray;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+}
+
+.airplane .body {
+  width: 5px;
+  height: 36px;
+  background: gray;
+}
+
+.airplane .wings > .left-wing {
+  position: absolute;
+  width: 24px;
+  height: 8px;
+  background-image: linear-gradient(-15deg, gray 50%, transparent 60%);
+  border-bottom-left-radius: 5px;
+  transform: translate(-22px, -21px) rotate(-20deg);
+}
+
+.airplane .wings > .right-wing {
+  position: absolute;
+  width: 24px;
+  height: 8px;
+  background-image: linear-gradient(15deg, gray 50%, transparent 60%);
+  border-bottom-right-radius: 5px;
+  transform: translate(2px, -21px) rotate(20deg);
+}
+
+.airplane .tail > .left-tail {
+  width: 7px;
+  height: 3px;
+  background: gray;
+  border-radius: 100%;
+  transform: translate(-4px) rotate(-20deg);
+}
+
+.airplane .tail > .right-tail {
+  width: 7px;
+  height: 3px;
+  background: gray;
+  border-radius: 100%;
+  transform: translate(3px, -3px) rotate(20deg);
+}
+
+.airplane .text {
+  position: relative;
+  color: gray;
+  font-family: arial;
+  font-size: 8px;
+  right: 30px;
+}
+
+.airplane .cooldown-time {
+  position: absolute;
+  color: white;
+  font-family: arial;
+  font-size: 22px;
+  top: calc(50% - 11px);
+  left: -10px;
+}
